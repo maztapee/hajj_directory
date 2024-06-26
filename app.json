@@ -3,6 +3,10 @@
     "name": "HajjDirectory",
     "slug": "HajjDirectory",
     "version": "1.0.0",
+    "sdkVersion": "49.0.0",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,13 +19,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maztapee.HajjDirectory"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.maztapee.HajjDirectory"
     },
     "web": {
       "favicon": "./assets/favicon.png"
