@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dce0591c-1f62-451d-be25-16df9e0f2fb6"
+      }
+    },
+    "owner": "maztapee"
   }
 }

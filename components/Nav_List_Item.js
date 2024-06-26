@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Image} from 'react-native';
 import { create } from 'apisauce';
 
 const api = create({
@@ -42,20 +42,26 @@ const Nav_List_Item = ({navigation})=>{
   };
   return (
     <View style={styles.listItem}>
-      <FlatList
-        data = {Object.values(navItems)}
-        renderItem={({item}) =>(
-          <View style={styles.item}>
-            <Image source={require('../assets/images/phone_widget.jpg')} style={styles.image}/>
-            <TouchableOpacity onPress={()=> {toggleHighlight(item.location_name, item.location_id);}}>
-              <Text style={[{fontWeight: 'normal'}, highlighted === item.location_name && styles.highlighted]}>
-                {capitalizeFirstLetterOfEachWord(item.location_name)}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        )}
-        keyExtractor={(item,index) => index.toString()}
-      />
+      {navItems.length > 0 ? (
+        <FlatList
+          data = {Object.values(navItems)}
+          renderItem={({item}) =>(
+            <View style={styles.item}>
+              <Image source={require('../assets/images/phone_widget.jpg')} style={styles.image}/>
+              <TouchableOpacity onPress={()=> {toggleHighlight(item.location_name, item.location_id);}}>
+                <Text style={[{fontWeight: 'normal'}, highlighted === item.location_name && styles.highlighted]}>
+                  {capitalizeFirstLetterOfEachWord(item.location_name)}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          keyExtractor={(item,index) => index.toString()}
+        />) : (
+        <View style={{justifyContent:"center", alignItems:"center"}}>
+          <ActivityIndicator size="larger" color="#0000ff" />
+          <Text style={{fontSize:18, fontWeight:"bold"}}>Loading Locations</Text>
+        </View>
+      )}
     </View>
   );
 }

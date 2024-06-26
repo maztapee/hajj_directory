@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, StyleSheet, View, Text, Image, TouchableOpacity,Alert, Linking, Platform } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
-import { capitalizeFirstLetterOfEachWord } from '../utils';
+import { capitalizeFirstLetterOfEachWord, handleWhatsAppPress } from '../utils';
 
 function ContactDetailScreen({ navigation, route }) {
   const { name, phoneNumber, whatsapp, office_location, image} = route.params;
@@ -23,18 +23,18 @@ function ContactDetailScreen({ navigation, route }) {
       };
   };
 
-  const handleWhatsAppPress = (number) => {
-    const url = `whatsapp://send?phone=${number}`;
-    Linking.canOpenURL(url).then((supported) => {
-      if (supported) {
-        Linking.openURL(url).catch((err) => {
-          Alert.alert('Error', 'Unable to open WhatsApp');
-        });
-      } else {
-        Alert.alert('WhatsApp not installed', 'Please install WhatsApp to use this feature');
-      }
-    });
-  };
+  // const handleWhatsAppPress = (number) => {
+  //   const url = `whatsapp://send?phone=${number}`;
+  //   Linking.canOpenURL(url).then((supported) => {
+  //     if (supported) {
+  //       Linking.openURL(url).catch((err) => {
+  //         Alert.alert('Error', 'Unable to open WhatsApp');
+  //       });
+  //     } else {
+  //       Alert.alert('WhatsApp not installed', 'Please install WhatsApp to use this feature');
+  //     }
+  //   });
+  // };
   return (
     <View style={styles.detail_screen}>
       <View style={styles.top_screen}>

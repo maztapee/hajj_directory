@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     // border: 'solid',
     // borderWidth:1,
     // borderRadius:6,
-    //Na here you go delete oooo, in case of nonsense olodo!
+    //Na here you go delete oooo, in case of nonsense olodo like me!
     position: 'absolute',
     bottom:0,
     width: '100%',

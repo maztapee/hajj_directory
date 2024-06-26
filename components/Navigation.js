@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Nav_List from './Nav_List';
+import { handleWhatsAppPress } from '../utils';
 
 const Navigation = ({showNavi, toggleNavi, navigation, selectedNav} )=>{ 
     return(
@@ -40,7 +41,7 @@ const Navigation = ({showNavi, toggleNavi, navigation, selectedNav} )=>{
               </View>
               <Nav_List navigation = {navigation} navSelection={selectedNav}/>
               <View style={styles.contact}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> handleWhatsAppPress('+2347016042209')}>
                   <Text>CALL CENTER</Text>
                   <Text>+234-701-604-2209</Text>
                 </TouchableOpacity>
