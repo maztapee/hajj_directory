@@ -14,8 +14,8 @@
       }
     },
     "preview": {
-      "distribution": "internal", 
-      "android":{
+      "distribution": "internal",
+      "android": {
         "buildType": "apk"
       },
       "ios": {
@@ -26,13 +26,13 @@
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
-    },
-    "ios": {
-      "buildConfiguration": "Release"
+      },
+      "ios": {
+        "buildConfiguration": "Release"
+      }
     }
   },
   "submit": {
     "production": {}
   }
-}
 }

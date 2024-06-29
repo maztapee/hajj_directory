@@ -3,7 +3,8 @@ import {
   StyleSheet, 
   View, 
   TouchableWithoutFeedback,
-  AppRegistry 
+  AppRegistry, 
+  SafeAreaView
   } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -30,14 +31,14 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-      
+    <SafeAreaView style={styles.safeArea}>
         <View style={styles.mainbody}>
           <Navigation showNavi={showNav} toggleNavi={toggleVisibility} navigation={navigation} />
           <TouchableWithoutFeedback >
            <PageView showNav={showNav} toggleNav={toggleVisibility} onTouch={handleOutsideTouchClose}/>
           </TouchableWithoutFeedback>
         </View>
-
+    </SafeAreaView>
   );
 };
 
@@ -57,6 +58,10 @@ export default function App() {
 AppRegistry.registerComponent('hajjdirectory', () => App);
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   mainbody: {
     flex:1,
     flexDirection:'row',

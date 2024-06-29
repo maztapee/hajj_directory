@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Button, StyleSheet, View, ActivityIndicator, Text, ScrollView } from 'react-native';
+import { Button, StyleSheet, View, ActivityIndicator, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import ContactCard from './ContactCard';
 import { genderApi,contactsApi } from '../api/api';
@@ -78,13 +78,11 @@ function ContactScreen({ navigation }) {
           </View>
         )}
       </ScrollView>
-        <View style={styles.button}>
-          <Button
-            title="Go to Home Page"
-            onPress={() => navigation.navigate('Home Page')}
-            
-          />
-        </View>
+      <View style={styles.button_container}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home Page')}>
+          <Text style={styles.buttonText}>Go To Home Page</Text>
+        </TouchableOpacity>
+      </View>
         
     </View>
   );
@@ -101,20 +99,24 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     marginRight: 4
   },
-  button:{
-    // position: '',
-    // alignSelf:'center',
-    // alignContent:'center',
-    // width: '60%',
-    // border: 'solid',
-    // borderWidth:1,
-    // borderRadius:6,
-    //Na here you go delete oooo, in case of nonsense olodo like me!
+  button_container:{
     position: 'absolute',
-    bottom:0,
+    bottom: 0,
     width: '100%',
     paddingHorizontal: 60,
-
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: 'gray',
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

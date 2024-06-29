@@ -28,8 +28,8 @@ function ContactDetailScreen({ navigation, route }) {
       <View style={styles.top_screen}>
         <Image source={image} resizeMode="contain" style={styles.image} />
         <View style={styles.details}>
-          <Text style={styles.text}>Name: <Text style={{color:'blue'}}>{capitalizeFirstLetterOfEachWord(name)}</Text></Text>
-          <Text style={styles.text}>Designation: <Text style={{color:'blue'}}>{office_location}</Text></Text>
+          <Text style={styles.text}>Name: <Text style={{color:'black'}}>{capitalizeFirstLetterOfEachWord(name)}</Text></Text>
+          <Text style={styles.text}>Designation: <Text style={{color:'black'}}>{office_location}</Text></Text>
           <View style={styles.contactRow}>
             <Image 
                   source={require('../assets/telephone.png')}
@@ -55,11 +55,10 @@ function ContactDetailScreen({ navigation, route }) {
         </View>
       </View>
 
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Home Page"
-          onPress={() => navigation.navigate('Home Page')}
-        />
+      <View style={styles.button_container}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home Page')}>
+          <Text style={styles.buttonText}>Go To Home Page</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
   detail_screen: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: "skyblue",
+    backgroundColor: "white",
   },
   top_screen: {
     width: '100%',
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "skyblue",
+    backgroundColor: "lightgray",
     padding: 10,
   },
   details: {
@@ -98,7 +97,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 4,
     fontWeight: "bold",
-    fontStyle: "italic",
+    color:'darkslategrey'
+    // fontStyle: "italic",
   },
   contactRow: {
     flexDirection: 'row',
@@ -114,14 +114,28 @@ const styles = StyleSheet.create({
   linkText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: 'blue',
+    color: 'black',
     textDecorationLine: 'underline',
+    fontStyle: "italic"
   },
-  buttonContainer: {
+  button_container:{
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     width: '100%',
     paddingHorizontal: 60,
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: 'gray',
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
