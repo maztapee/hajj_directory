@@ -12,7 +12,7 @@ const Navigation = ({showNavi, toggleNavi, navigation, selectedNav} )=>{
               </TouchableOpacity>
             </View>
             <View style={styles.grid_1layer1}>
-                <View><Text>2024 HAJJ E-Directorate</Text></View>
+                <View style={{top:'0%', alignItems:'center'}}><Text style={{fontWeight:'bold', fontSize:17}}>2024 HAJJ E-Directorate</Text></View>
                 <View style={styles.status_bar}>
                     <View style={styles.image}> 
                         <Image 
@@ -21,17 +21,11 @@ const Navigation = ({showNavi, toggleNavi, navigation, selectedNav} )=>{
                             resizeMode='contain'
                         />
                         <View style={{flexDirection:'column'}}>
-                          <Text>Pilgrim</Text>
+                          <Text style={{fontWeight:'bold'}}>Pilgrim</Text>
                           <View style={{flexDirection:'row'}}>
-                            <View style={styles.circle}></View><Text>Online</Text>
+                            <View style={styles.circle}></View><Text style={{fontWeight:'bold'}}>Online</Text>
                           </View>
                         </View>
-                    </View>
-                    <View>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Search..."
-                    />
                     </View>
                 </View>
             </View>
@@ -56,7 +50,7 @@ const styles = StyleSheet.create({
     grid_1:{
       position: 'absolute',
       flex: 1,
-      backgroundColor: '#ddd',
+      backgroundColor: 'lightgray',
       opacity:0.88,
       alignItems: 'center',
       justifyContent: 'center',
@@ -70,7 +64,7 @@ const styles = StyleSheet.create({
       borderRightWidth:2,
       borderBottomRightRadius:15,
       width:'58%',
-      height:'98.5%'
+      height:'98.5%',
       },
         grid_1layer1:{
     flex:0.55,
@@ -129,7 +123,6 @@ const styles = StyleSheet.create({
     alignItems:'center',
     width: '30%',
     height: '6.5%',
-    opacity: 1
   }
 })
 export default Navigation;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, StyleSheet, View, Text, Image, TouchableOpacity,Alert, Linking, Platform } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity,Alert, Linking, Platform } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { capitalizeFirstLetterOfEachWord, handleWhatsAppPress } from '../utils';
 

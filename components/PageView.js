@@ -2,13 +2,22 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ImageSlider from './NewSlide';
 
-const PageView = ( {toggleNav, onTouch} )=>{
+const PageView = ( {toggleNav, onTouch, navigation} )=>{
 
     return(
-      <View style={styles.grid_2} onTouchStart={onTouch}>
+      <View style={styles.grid_2} onTouchStart = {onTouch}>
         <View style={styles.top_pageview}>
           <TouchableOpacity style={ styles.toggleVisibility} onPress={ toggleNav}>
             <Icon name="bars" size={35} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.searchInput} onPress={() => {
+              console.log("Search Contacts clicked");
+              navigation.navigate("Search Contact Page");
+              }
+            }>
+            <View style={styles.button}>
+                <Text style={styles.buttonText}>Search Contacts</Text>
+            </View>
           </TouchableOpacity>
         </View>
         <View style={styles.image_base}>
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
     top_pageview: {
       flexDirection:'row',
       border: 'solid',
-      
+      width: "100%",     
       elevation:5,
       backgroundColor: 'lightgray'
     },
@@ -73,6 +82,18 @@ const styles = StyleSheet.create({
       alignItems:'center',
       borderRadius:10,
       opacity:0.85
+    },
+    searchInput:{
+      position:"absolute",
+      right: 0,
+      height: "100%",
+      minWidth:"40%",
+      backgroundColor: "darkgray",
+      justifyContent: "space-around",
+      border: 'solid',
+      borderWidth: 1,
+      borderRadius: 12,
+      alignItems:"center"
     }
   });
   

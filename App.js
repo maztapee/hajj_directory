@@ -12,33 +12,42 @@ import PageView from './components/PageView';
 import Navigation from './components/Navigation';
 import ContactScreen from './components/ContactScreen';
 import ContactDetailScreen from './components/ContactDetailScreen';
+import SearchResultScreen from './components/SearchResultsScreen';
 
 const Stack = createStackNavigator();
 
 const HomeScreen = ({navigation}) => {
 
-  const [showNav, setShowNav] = React.useState(false);
+  const [showNav, setShowNav] = useState(false);
 
   const toggleVisibility = () => {
     setShowNav(!showNav);
   };
 
   const handleOutsideTouchClose = () => {
-    console.log("clicked outside");
+    console.log("ontouch start");
     if (showNav) {
       setShowNav(!showNav);
    }
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+      
         <View style={styles.mainbody}>
-          <Navigation showNavi={showNav} toggleNavi={toggleVisibility} navigation={navigation} />
-          <TouchableWithoutFeedback >
-           <PageView showNav={showNav} toggleNav={toggleVisibility} onTouch={handleOutsideTouchClose}/>
-          </TouchableWithoutFeedback>
+          <Navigation 
+            showNavi={showNav} 
+            toggleNavi={toggleVisibility} 
+            navigation={navigation} 
+          />
+          <TouchableWithoutFeedback onPress={handleOutsideTouchClose}>
+            <PageView 
+            showNav={showNav} 
+            toggleNav={toggleVisibility} 
+            onTouch={handleOutsideTouchClose} 
+            navigation={navigation} />
+           </TouchableWithoutFeedback>
         </View>
-    </SafeAreaView>
+      
   );
 };
 
@@ -49,6 +58,7 @@ export default function App() {
         <Stack.Screen name="Home Page" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Contact List" component={ContactScreen}/>
         <Stack.Screen name="Contact Detail" component={ContactDetailScreen} />
+        <Stack.Screen name="Search Contact Page" component={SearchResultScreen} />
         {/* Add more screens here */}
       </Stack.Navigator>
     </NavigationContainer>
@@ -58,10 +68,6 @@ export default function App() {
 AppRegistry.registerComponent('hajjdirectory', () => App);
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
   mainbody: {
     flex:1,
     flexDirection:'row',
