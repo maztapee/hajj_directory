@@ -13,6 +13,7 @@ import Navigation from './components/Navigation';
 import ContactScreen from './components/ContactScreen';
 import ContactDetailScreen from './components/ContactDetailScreen';
 import SearchResultScreen from './components/SearchResultsScreen';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +33,13 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-      
+      <SafeAreaView style={{
+        flex:1,}}>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="white"
+          translucent={false}
+        />
         <View style={styles.mainbody}>
           <Navigation 
             showNavi={showNav} 
@@ -47,6 +54,7 @@ const HomeScreen = ({navigation}) => {
             navigation={navigation} />
            </TouchableWithoutFeedback>
         </View>
+      </SafeAreaView>
       
   );
 };
@@ -71,13 +79,12 @@ const styles = StyleSheet.create({
   mainbody: {
     flex:1,
     flexDirection:'row',
-    marginTop: '10%',
     marginLeft: 2,
     marginRight:2,
     borderWidth: 2,
     borderRadius: 10,
     backgroundColor: 'lightgray',
-    // alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });

@@ -1,35 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Image} from 'react-native';
 import { create } from 'apisauce';
+import { useFocusEffect } from '@react-navigation/native';
 
 const api = create({
   baseURL: 'http://api.hajjwayfinder.com.ng/',
   headers: { Accept: 'application/json' },
 });
 
-const Nav_List_Item = ({navigation})=>{
+const Nav_List_Item = ({navigation, status})=>{
 
   const [navItems, setNavItems] = useState([]);
   const [highlighted, setHighlighted] = useState(null);
 
-  useEffect(() => {
-    // Function to fetch navigation items
-    const fetchNavItems = async () => {
-      try {
-        const response = await api.get('locations');
-        if (response.ok) {
-          setNavItems(response.data);
-        } else {
-          console.error('Oops!, An error occurred while fetching data:', response.problem);
-        }
-      } catch (error) {
-        console.error('Network error:', error);
+  const fetchNavItems = useCallback(async ()=> {
+    try {
+      if (navItems.length) return;
+      const response = await api.get('locations');
+      if (response.ok) {
+        setNavItems(response.data);
+      } else {
+        console.error('Oops!, An error occurred while fetching data:', response.problem);
       }
-    };
+    } catch (error) {
+      console.error('Network error:', error);
+    }
+  }, [navItems])
 
+  useFocusEffect(()=> {
+    if (status && navItems.length < 1){
+      fetchNavItems();
+    }else{
+      return;
+    }  
+    console.log('I am focused', status);
+  })
+  
+  useEffect(() => {
+    console.log('I am focused useeffect');
     // Fetch the navigation items when the component mounts
     fetchNavItems();
-  }, []);
+  }, [fetchNavItems]);
 
   const capitalizeFirstLetterOfEachWord = (string) => {
     return string.replace(/\b\w/g, char => char.toUpperCase());

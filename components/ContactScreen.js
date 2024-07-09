@@ -73,7 +73,7 @@ function ContactScreen({ navigation }) {
           ))
         ) : (
           <View style={{justifyContent:"center", alignItems:"center"}}>
-              <ActivityIndicator size="larger" color="#0000ff" />
+              <ActivityIndicator size="larger" color="gray" />
               <Text style={{fontSize:18, fontWeight:"bold"}}>Loading Contact List</Text>
           </View>
         )}
